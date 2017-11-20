@@ -11,9 +11,14 @@
 #include "Server.h"
 
 class clientFD: public Server {
+private:
+	int clientFD_;
 public:
 	clientFD();
 	virtual ~clientFD();
+
+	int getClientFD();
+	void setClientFD();
 };
 
 #endif /* CLIENTFD_H_ */
