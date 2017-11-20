@@ -9,6 +9,8 @@
 
 #include <string.h> //memset
 #include <arpa/inet.h> //struct
+#include <sys/socket.h> //socket
+#include <sys/types.h> //socket
 
 clientFD::clientFD() {
 	clientFD_ = -1;
@@ -42,6 +44,6 @@ void clientFD::setClientFD() {
 	//TODO
 
 	clientFD_ = accept(-1/*sockfd should be here*/, (struct sockaddr *) &client_addr,
-			(unsigned int *) &client_addr_len);
+			&client_addr_len);
 }
 

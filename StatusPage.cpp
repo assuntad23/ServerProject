@@ -24,18 +24,17 @@ StatusPage::~StatusPage() {
 
 std::string StatusPage::writeInfo(){
 
+	//creating HTTP string and HTML tags
 	std::string HTTPInfo = "HTTP/1.1 200 OK\r\n Server: ADJSWeb v1.0\r\n Content-Type: text/html\r\n \r\n";
 	std::string HTMLStart ="<html><head><title>Status Page</title></head><body><h1>Status:</h1>";
 	std::string HTMLEnd = "</body></html>";
 
-	writeDateToSocket();
-	writeKernelInfoToSocket();
-	writeSystemInfoToSocket();
-//TODO	writeNetworkInfoToSocket(Socket.portnum());
 
 
-
-	std::string StatusInfo = HTTPInfo + HTMLStart + HTMLEnd;
+	std::string StatusInfo = HTTPInfo + HTMLStart + writeDateToSocket() +
+			writeKernelInfoToSocket() + writeSystemInfoToSocket()
+			//TODO	+ writeNetworkInfoToSocket(Socket.portnum()) - after we get portnum working in socket
+			+ HTMLEnd;
 	return StatusInfo;
 }
 
